@@ -6,6 +6,8 @@
  */
 package org.footoo.jeffwebframe;
 
+import org.footoo.jeffwebframe.exception.JWFNoImplementException;
+
 /**
  * JWF的请求处理的基本接口
  * @author jeff

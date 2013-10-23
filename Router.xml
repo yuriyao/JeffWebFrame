@@ -1,0 +1,16 @@
+<!-- 路由表 -->
+<JWFRouter>
+	<!-- 给自己的程序起一个犀利的名字 -->
+	<ProgramName>JWFTest<ProgramName>
+	<!-- 填写路由表奥 -->
+	<Routers>
+		<!-- 这是一个路由项 -->
+		<!-- 可以或者不指定Property: const,是常量，那么可以优化缓存；volatile,总是不会使用缓存；normal,正常使用缓存 -->
+		<Entity Property="">
+			<!-- 路径 -->
+			<Path>/</Path>
+			<!-- 调用的函数 -->
+			<Func>JWFTest.test</Func>
+		</Entity>
+	</Routers>
+<JWFRouter>

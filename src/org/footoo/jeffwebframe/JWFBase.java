@@ -6,6 +6,8 @@
  */
 package org.footoo.jeffwebframe;
 
+import org.footoo.jeffwebframe.exception.JWFNoImplementException;
+
 /**
  * @author jeff
  *

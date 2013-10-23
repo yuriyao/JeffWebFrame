@@ -6,9 +6,7 @@
  */
 package org.footoo.jeffwebframe.buffer;
 
-import java.nio.ByteBuffer;
-
-import org.footoo.jeffwebframe.JWFLog;
+import org.footoo.jeffwebframe.util.JWFLog;
 
 /**
  * @author jeff
