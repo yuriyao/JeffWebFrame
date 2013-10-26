@@ -6,6 +6,7 @@
  */
 package org.footoo.jeffwebframe;
 
+import org.footoo.jeffwebframe.exception.JWFHTTPException;
 import org.footoo.jeffwebframe.exception.JWFNoImplementException;
 
 /**
@@ -20,12 +21,12 @@ public interface JWFBaseInterface
 	 * @return
 	 * @throws JWFNoImplementException 
 	 */
-	public JWFResult get() throws JWFNoImplementException;
+	public JWFResult get() throws JWFNoImplementException, JWFHTTPException;
 	
 	/**
 	 * 处理POST方式
 	 * @return
 	 * @throws JWFNoImplementException 
 	 */
-	public JWFResult post() throws JWFNoImplementException;
+	public JWFResult post() throws JWFNoImplementException, JWFHTTPException;
 }

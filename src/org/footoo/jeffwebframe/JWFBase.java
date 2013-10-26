@@ -6,6 +6,7 @@
  */
 package org.footoo.jeffwebframe;
 
+import org.footoo.jeffwebframe.exception.JWFHTTPException;
 import org.footoo.jeffwebframe.exception.JWFNoImplementException;
 
 /**
@@ -18,14 +19,14 @@ public class JWFBase implements JWFBaseInterface
 	/* 实现的默认的处理方法
 	 * @see org.footoo.jeffwebframe.JWFBaseInterface#get()
 	 */
-	public JWFResult get() throws JWFNoImplementException {
+	public JWFResult get() throws JWFNoImplementException, JWFHTTPException {
 		throw new JWFNoImplementException(GET);
 	}
 
 	/* 实现的默认的POST处理方法
 	 * @see org.footoo.jeffwebframe.JWFBaseInterface#post()
 	 */
-	public JWFResult post() throws JWFNoImplementException {
+	public JWFResult post() throws JWFNoImplementException, JWFHTTPException{
 		throw new JWFNoImplementException(POST);
 	}
 	

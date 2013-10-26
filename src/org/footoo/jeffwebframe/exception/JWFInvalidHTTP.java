@@ -13,8 +13,13 @@ import org.footoo.jeffwebframe.util.JWFLog;
  * @author jeff
  * 无效的HTTP请求头
  */
-public class JWFInvalidHTTP extends Exception
+public class JWFInvalidHTTP extends JWFHTTPException
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6189942585867275919L;
+
 	public JWFInvalidHTTP(String msg, JWFHTTPHeaderBuffer buffer)
 	{
 		super(msg);

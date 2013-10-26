@@ -10,13 +10,17 @@ import org.footoo.jeffwebframe.buffer.JWFBuffer;
 import org.footoo.jeffwebframe.buffer.JWFHTTPHeaderBuffer;
 import org.footoo.jeffwebframe.epoll.JWFNIOTrigger;
 import org.footoo.jeffwebframe.epoll.JWFNIO.JWFIOEvent;
+import org.footoo.jeffwebframe.route.JWFRoute;
+import org.footoo.jeffwebframe.threads.JWFHTTPThread;
+import org.footoo.jeffwebframe.threads.JWFThreadPool;
 import org.footoo.jeffwebframe.util.JWFLog;
 
 /**
  * @author jeff
  *
  */
-public class JWFHTTPTrigger implements JWFNIOTrigger {
+public class JWFHTTPTrigger implements JWFNIOTrigger 
+{
 
 	/* (non-Javadoc)
 	 * @see org.footoo.jeffwebframe.JWFNIOTrigger#trigger(int, org.footoo.jeffwebframe.buffer.JWFBuffer, org.footoo.jeffwebframe.JWFNIO.JWFIOEvent)
@@ -31,11 +35,16 @@ public class JWFHTTPTrigger implements JWFNIOTrigger {
 			JWFHttpHeaderParse parser = new JWFHttpHeaderParse(inputBuffer.toArray());
 			try {
 				parser.parse();
+				
+				//进行路由和执行
+				JWFThreadPool.getThreadPool().execute(new JWFHTTPThread(parser, info));
 			} 
 			catch (Exception e) 
 			{
 				//
 				JWFLog.getLog().logln(JWFLog.WARING, "解析HTTP请求头出现错误");
+				//直接返回错误给客户端
+				return;
 			}
 		}
 		

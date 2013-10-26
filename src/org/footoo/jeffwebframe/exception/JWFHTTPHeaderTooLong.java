@@ -10,7 +10,7 @@ package org.footoo.jeffwebframe.exception;
  * @author jeff
  * HTTP请求头过长的异常
  */
-public class JWFHTTPHeaderTooLong extends Exception 
+public class JWFHTTPHeaderTooLong extends JWFHTTPException
 {
 	/**
 	 * 
