@@ -10,7 +10,7 @@
 			<!-- 路径 -->
 			<Path>/</Path>
 			<!-- 调用的类 -->
-			<Class>JWFTest</Class>
+			<Class>org.footoo.userTest.Demo1</Class>
 		</Entity>
 		<Entity Property="">
 			<!-- 路径 -->
@@ -19,20 +19,5 @@
 			<Class>JWFTestIndex</Class>
 		</Entity>
 	</Routers>
-	<Routers>
-		<!-- 这是一个路由项 -->
-		<!-- 可以或者不指定Property: const,是常量，那么可以优化缓存；volatile,总是不会使用缓存；normal,正常使用缓存 -->
-		<Entity Property="">
-			<!-- 路径 -->
-			<Path>/2</Path>
-			<!-- 调用的类 -->
-			<Class>JWFTest2</Class>
-		</Entity>
-		<Entity Property="">
-			<!-- 路径 -->
-			<Path>/index2</Path>
-			<!-- 调用的类 -->
-			<Class>JWFTestIndex2</Class>
-		</Entity>
-	</Routers>
+	
 </JWFRouter>

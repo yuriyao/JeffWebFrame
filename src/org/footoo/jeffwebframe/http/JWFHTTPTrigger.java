@@ -33,6 +33,7 @@ public class JWFHTTPTrigger implements JWFNIOTrigger
 		{
 			//解析HTTP请求头
 			JWFHttpHeaderParse parser = new JWFHttpHeaderParse(inputBuffer.toArray());
+			JWFLog.getLog().logln(JWFLog.DEBUG, "开始解析HTTP请求头");
 			try {
 				parser.parse();
 				

@@ -105,7 +105,9 @@ public class JWFLog
 	public final static int ERROR = 4;
 	//跟踪非法的用户请求行为
 	public final static int TRACE = 5; 
-	private final static int LOG_TYPE_MAX = TRACE;
+	//软件bug
+	public final static int BUG = 6;
+	private final static int LOG_TYPE_MAX = BUG;
 	private final static int LOG_TYPE_MIN = DEBUG;
 	private final static int LOG_TYPE_NUMBER = LOG_TYPE_MAX - LOG_TYPE_MIN + 1;
 	

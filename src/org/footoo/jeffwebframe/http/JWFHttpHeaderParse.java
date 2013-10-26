@@ -7,6 +7,7 @@
 package org.footoo.jeffwebframe.http;
 
 import org.footoo.jeffwebframe.JWFBase;
+import org.footoo.jeffwebframe.JWFRequest;
 import org.footoo.jeffwebframe.exception.JWFInvalidHTTP;
 
 /**
@@ -22,7 +23,14 @@ public class JWFHttpHeaderParse
 	
 	public void parse() throws JWFInvalidHTTP
 	{
+		//解析请求行
 		
+	}
+	
+	public JWFRequest getRequest()
+	{
+		JWFRequest request = new JWFRequest();
+		return request;
 	}
 	
 	public String getDir()
@@ -43,4 +51,8 @@ public class JWFHttpHeaderParse
 	private String dirString = "/";
 	//请求方式
 	private int request_method = JWFBase.GET;
+	
+	//HTTP版本号
+	public static final int HTTP_VERSION_1_1 = 1;
+	public static final int HTTP_VERSION_1_0 = 0;
 }

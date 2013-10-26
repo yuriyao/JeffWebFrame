@@ -23,6 +23,8 @@ import java.util.Set;
 
 import org.footoo.jeffwebframe.buffer.JWFBuffer;
 import org.footoo.jeffwebframe.buffer.JWFHTTPHeaderBuffer;
+import org.footoo.jeffwebframe.http.JWFHTTPTrigger;
+import org.footoo.jeffwebframe.route.JWFRoute;
 import org.footoo.jeffwebframe.util.JWFLog;
 import org.footoo.jeffwebframe.util.JWFUtil;
 
@@ -97,7 +99,7 @@ public class JWFNIO
 							SocketChannel client = ((ServerSocketChannel)channel).accept();
 							if(client != null)
 							{
-								append(client, SelectionKey.OP_READ | SelectionKey.OP_WRITE, null);
+								append(client, SelectionKey.OP_READ | SelectionKey.OP_WRITE, new JWFHTTPTrigger());
 								//打印信息
 								JWFLog.getLog().logln(JWFLog.NORMAL, "接收到来自" + client.socket().getInetAddress() + ":" + client.socket().getPort() + "的连接");
 							}
@@ -130,7 +132,7 @@ public class JWFNIO
 								
 								//nioEvent.outputBuffer.append(("Write" + nioEvent.inputBuffer.getLength()).getBytes());
 								byte output[] = nioEvent.outputBuffer.delHead(BUFFER_LEN);
-								
+								System.out.println(new String(output));
 								buffer.put(output);
 								//开始输出
 								buffer.flip();
@@ -142,6 +144,10 @@ public class JWFNIO
 									{
 										ret = ret >= 0 ? ret : 0;
 										nioEvent.outputBuffer.push(output, ret, output.length - ret);
+									}
+									if(nioEvent.outputBuffer.getLength() == 0)
+									{
+										((SocketChannel)channel).close();
 									}
 									
 								} catch (Exception e) {
@@ -190,18 +196,19 @@ public class JWFNIO
 		//输入缓冲区
 		public JWFBuffer inputBuffer = new JWFHTTPHeaderBuffer();
 		//输出缓冲区
-		public JWFBuffer outputBuffer = new JWFHTTPHeaderBuffer();
+		public JWFBuffer outputBuffer = new JWFBuffer();
 		//触发函数
 		public JWFNIOTrigger trigger;
 		//接受的事件
 		public int event;
 		//是否应该开始向外输出数据
-		volatile boolean writable = true;
+		public volatile boolean writable = false;
 	}
 	
 	public static void main(String args[]) throws IOException
 	{
 		JWFNIO nio = new JWFNIO();
+		JWFRoute.getRoute().setRoutePath("Router.xml");
 		ServerSocketChannel server = ServerSocketChannel.open();
 		server.socket().bind(new InetSocketAddress("localhost", 8080));
 		nio.append(server, SelectionKey.OP_ACCEPT, null);

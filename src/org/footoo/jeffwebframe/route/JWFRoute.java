@@ -72,7 +72,7 @@ public class JWFRoute
 			Class<JWFBase> cls = (Class<JWFBase>) Class.forName(routeInfo.className);
 			JWFBase jwfBase = cls.newInstance();
 			//初始化一些信息
-			
+			JWFLog.getLog().logln(JWFLog.DEBUG, "开始调用函数");
 			result.clear();
 			//调用GET方式
 			if(parse.getRequestMethod() == JWFBase.GET)
@@ -110,6 +110,7 @@ public class JWFRoute
 		} 
 		//将结果发给客户端
 		result.send(info);
+		
 	}
 	
 	private JWFRoute()
