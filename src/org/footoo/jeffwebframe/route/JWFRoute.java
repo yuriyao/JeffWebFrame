@@ -71,6 +71,8 @@ public class JWFRoute
 			@SuppressWarnings("unchecked")
 			Class<JWFBase> cls = (Class<JWFBase>) Class.forName(routeInfo.className);
 			JWFBase jwfBase = cls.newInstance();
+			//设置请求信息
+			jwfBase.setRequest(parse.getRequest());
 			//初始化一些信息
 			JWFLog.getLog().logln(JWFLog.DEBUG, "开始调用函数");
 			result.clear();

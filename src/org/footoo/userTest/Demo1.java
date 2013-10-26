@@ -19,7 +19,12 @@ public class Demo1 extends JWFBase
 	{
 		System.out.println("Hello world");
 		JWFResult result = new JWFResult();
-		result.setContent("hello world".getBytes());
+		String name = getGetValue("name");
+		name = name == null ? "jeff" : name;
+		String sex = getGetValue("sex");
+		sex = sex == null ? "Male" : sex;
+		result.setContent(("Hello " + name + " " + sex).getBytes());
+		
 		return result;
 	}
 }

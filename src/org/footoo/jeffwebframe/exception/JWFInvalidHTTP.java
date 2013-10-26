@@ -33,6 +33,11 @@ public class JWFInvalidHTTP extends JWFHTTPException
 		this("非法的HTTP请求", buffer);
 	}
 	
+	public JWFInvalidHTTP(String msg)
+	{
+		super(msg);
+	}
+	
 	//最多记录的非法HTTP请求头的长度
 	private static final int MAX_BUFFER_TO_RECORD = 20;
 }

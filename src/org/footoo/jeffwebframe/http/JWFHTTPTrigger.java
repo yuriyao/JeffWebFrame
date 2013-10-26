@@ -44,6 +44,7 @@ public class JWFHTTPTrigger implements JWFNIOTrigger
 			{
 				//
 				JWFLog.getLog().logln(JWFLog.WARING, "解析HTTP请求头出现错误");
+				
 				//直接返回错误给客户端
 				return;
 			}

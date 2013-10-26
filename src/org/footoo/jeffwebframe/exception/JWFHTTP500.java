@@ -33,6 +33,7 @@ public class JWFHTTP500 extends JWFHTTPException
 	public void setResult(JWFResult result)
 	{
 		result.setStatus(500);
+		result.setContent("500了".getBytes());
 	}
 	
 	

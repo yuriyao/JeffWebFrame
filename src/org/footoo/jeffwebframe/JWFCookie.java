@@ -10,6 +10,7 @@ package org.footoo.jeffwebframe;
  * @author jeff
  *
  */
-public class JWFCookie {
+public class JWFCookie 
+{
 
 }

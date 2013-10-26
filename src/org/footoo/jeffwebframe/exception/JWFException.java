@@ -20,5 +20,13 @@ public class JWFException extends Exception
 	public JWFException(String msg)
 	{
 		super(msg);
+		this.msg = msg;
 	}
+	
+	public String toString()
+	{
+		return msg;
+	}
+	
+	private String msg = "JWF发生异常";
 }
